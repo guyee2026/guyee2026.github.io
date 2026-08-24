@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>国际站外贸小白综合测试卷｜满分100分</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {box-sizing: border-box;}
+        .q-card{border:1px solid #e5e7eb;border-radius:12px;padding:16px;margin-bottom:18px;background:#fff;}
+        .ans-wrong{background:#fee2e2;border-left:4px solid #ef4444;padding:8px 12px;border-radius:6px;margin-top:6px;}
+        .ans-right{background:#dcfce7;border-left:4px solid #22c55e;padding:8px 12px;border-radius:6px;margin-top:6px;}
+        .hide{display:none !important;}
+        input[type="radio"],input[type="checkbox"]{width:18px;height:18px;margin-right:8px;}
+        input.text-input{border:1px solid #cbd5e1;padding:8px;border-radius:6px;width:100%;margin:4px 0}
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 pb-20">
+<div class="max-w-3xl mx-auto bg-white min-h-screen shadow">
+    <div class="p-5 bg-blue-700 text-white">
+        <h1 class="text-xl font-bold">阿里巴巴国际站外贸小白综合测试卷</h1>
+        <div class="mt-2 text-sm">
+            <div>考试时长：150分钟｜建议答题120分钟｜满分：100分｜60分及格</div>
+            <div id="timerBox" class="mt-2 font-mono text-yellow-200">剩余时间：<span id="countdown">150:00</span></div>
+        </div>
+    </div>
+
+    <div class="p-5">
+        <div class="mb-4 text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
+            说明：本试卷覆盖TM询盘转化、汽车轮毂产品、国际站平台规则。单选/多选/判断/填空系统自动评分；简答题、案例分析为主观题，需要人工阅卷。
+        </div>
+
+        <button id="startBtn" class="w-full bg-blue-600 text-white py-3 rounded-lg text-lg">📝 开始答题</button>
+
+        <div id="examWrap" class="hide">
+            <!-- 单选题 -->
+            <section class="mb-8">
+                <h2 class="text-lg font-bold mb-3">一、单项选择题（每题1分，共25分）</h2>
+                <div id="radioList"></div>
+            </section>
+
+            <!-- 多选题 -->
+            <section class="mb-8">
+                <h2 class="text-lg font-bold mb-3">二、多项选择题（每题1.5分，共30分；多选少选错选均不得分）</h2>
+                <div id="checkList"></div>
+            </section>
+
+            <!-- 判断 -->
+            <section class="mb-8">
+                <h2 class="text-lg font-bold mb-3">三、判断题（每题0.5分，共10分，正确√，错误×）</h2>
+                <div id="judgeList"></div>
+            </section>
+
+            <!-- 填空 -->
+            <section class="mb-8">
+                <h2 class="text-lg font-bold mb-3">四、填空题（每空0.5分，共10分）</h2>
+                <div id="fillList"></div>
+            </section>
+
+            <!-- 主观题 -->
+            <section class="mb-8">
+                <h2 class="text-lg font-bold mb-3">五、简答题（共15分，人工阅卷）</h2>
+                <div class="q-card">
+                    <div>1.(4分)简述TM弹窗之后标准30秒操作流程。</div>
+                    <textarea class="w-full border p-2 mt-2 rounded" rows="4" placeholder="在此填写答案"></textarea>
+                </div>
+                <div class="q-card">
+                    <div>2.(4分)简述OKKI CRM和Accio Work的定位、适用客户场景。</div>
+                    <textarea class="w-full border p-2 mt-2 rounded" rows="4" placeholder="在此填写答案"></textarea>
+                </div>
+                <div class="q-card">
+                    <div>3.(3分)轮毂改装，有哪4条核心安全原则。</div>
+                    <textarea class="w-full border p-2 mt-2 rounded" rows="3" placeholder="在此填写答案"></textarea>
+                </div>
+                <div class="q-card">
+                    <div>4.(4分)简述国际站新手商家第4‑6个月（订单沉淀，升星冲刺阶段）的重点工作。</div>
+                    <textarea class="w-full border p-2 mt-2 rounded" rows="4" placeholder="在此填写答案"></textarea>
+                </div>
+
+                <h2 class="text-lg font-bold mb-3 mt-6">六、案例分析题（10分，人工阅卷）</h2>
+                <div class="q-card">
+<pre class="text-sm bg-gray-50 p-2 rounded">
+案例背景：阿里巴巴国际站TM消息弹窗，买家发送消息：Hi, please send me price for car wheel.
+打开TM右侧面板查看：买家浏览过18寸5×114.3旋压轮毂；90天询盘发送数量22家；买家注册时间2022年，公司信息空白，无历史线上交易记录；AI标签显示"价格敏感"。
+
+请完成：
+1. 判断客户A/B/C等级，并说明判断理由（3分）
+2. 写出第一轮TM回复话术，遵循TM沟通铁律（3分）
+3. 后续该客户的建档、背调策略（2分）
+4. 如果客户已读不回，请写出后续跟进策略（2分）
+</pre>
+                    <textarea class="w-full border p-2 mt-2 rounded" rows="8" placeholder="在此填写答案"></textarea>
+                </div>
+            </section>
+
+            <button id="submitBtn" class="w-full bg-green-600 text-white py-3 rounded-lg text-lg mt-4">✅ 提交试卷（客观题自动判分）</button>
+
+            <!-- 结果区域 -->
+            <div id="resultWrap" class="hide mt-6 p-4 rounded-lg border-2 border-gray-300">
+                <h3 class="text-xl font-bold">📊 测评结果</h3>
+                <div class="my-2">客观题得分：<span id="scoreVal" class="text-red-600 font-bold">0</span> /75分</div>
+                <div class="my-2">主观题（简答+案例）合计25分需要人工批改，最终总分=客观分+主观分</div>
+                <div id="passTip" class="text-lg my-2"></div>
+                <hr class="my-4">
+                <h4 class="font-bold">错题详情：</h4>
+                <div id="errorDetail"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// 题库定义
+const questionBank = {
+    radio:[
+        {q:"1. 在TM询盘处理中，以下哪一条属于无效开场消息，不建议直接发送",opts:["A. Hi! For Germany, our SMD2835 IP65 would be perfect.","B. Hello friend","C. Waterproof or indoor? 12V or 24V?","D. Which product are you inquiring about?"],ans:"B",score:1},
+        {q:"2. TM窗口三个客户信息入口，不包含下面哪一项",opts:["A.TM聊天窗口右侧面板","B.买家头像名片浮窗","C.客户详情View Profile页面","D.买家个人社交媒体后台"],ans:"D",score:1},
+        {q:"3. 买家90天发送询盘数量在15‑30家，代表",opts:["A.定向精准采购客户","B.群发比价客户，不要过度纠缠价格","C.平台顶级大买家","D.复购型老买家"],ans:"B",score:1},
+        {q:"4. A级客户判定核心条件是",opts:["A.仅发送一句话询价，买家资料空白","B.消息具体、资料完整、有浏览记录、存在交易记录","C.消息模糊，基础资料一般，浏览行为中等","D.只发单词price，无任何浏览行为"],ans:"B",score:1},
+        {q:"5. TM沟通铁律，单条消息建议控制在多少句话以内",opts:["A.10句","B.5句","C.3句","D.无限制"],ans:"C",score:1},
+        {q:"6. OKKI CRM与Accio Work分工，下面描述正确的是",opts:["A.Accio Work做日常全部客户快速画像；OKKI只做A级客户深度背调","B.OKKI完成快速画像，Accio Work用于A级/大额订单深度洞察","C.二者功能完全一样，任选其一即可","D.日常询盘优先使用Accio Work快速建档"],ans:"B",score:1},
+        {q:"7. TM聊天客户"聊一半离线"，正确处理动作",opts:["A.反复发送Hello? Are you there?追问","B.TM发送总结消息，同步发送邮件至注册邮箱","C.直接标记C级不再跟进","D.立刻打电话联系买家"],ans:"B",score:1},
+        {q:"8. TM跟进时间线，T+2代表聊完之后",opts:["A.当天","B.第2天","C.第5天","D.第12天"],ans:"B",score:1},
+        {q:"9. 向客户索要WhatsApp，最佳做法是",opts:["A.直接提问：What’s your WhatsApp number?","B.给出合理理由，例如可以发送安装视频、大文件更方便再索要","C.刚开场第一句就索要联系方式","D.C级客户优先索要WhatsApp"],ans:"B",score:1},
+        {q:"10. TM询盘北极星考核指标为",opts:["A.总询盘数量","B.A级TM客户转化率（成交数/A级对话数）","C.已读不回数量","D.RFQ报价数量"],ans:"B",score:1},
+        {q:"11. 轮毂参数PCD 5×114.3含义是",opts:["A.轮毂宽度5J，直径114.3英寸","B.5颗螺栓孔分布在直径114.3mm的圆上","C.中心孔径5mm，偏距114.3mm","D.扁平比5%，载荷114.3kg"],ans:"B",score:1},
+        {q:"12. 关于轮毂ET偏距，描述正确的是",opts:["A.ET数值越小轮毂越向外凸出","B.ET数值越小轮毂越向内凹","C.ET值可以随意改装，不会干涉悬挂","D.ET代表轮毂直径"],ans:"A",score:1},
+        {q:"13. 轮毂中心孔CB，当轮毂中心孔大于轴头，正确做法",opts:["A.直接强行安装","B.加装变径圈进行适配","C.打磨轴头扩大尺寸","D.该轮毂彻底报废不能使用"],ans:"B",score:1},
+        {q:"14. 下面哪种轮毂制造工艺，属于铸造成雏形再旋压轮辋，兼顾性价比与强度",opts:["A.重力铸造","B.旋压铸造","C.锻造","D.碳纤维一体成型"],ans:"B",score:1},
+        {q:"15. 轮胎扁平比越低，带来的变化是",opts:["A.操控弱，舒适性高，鼓包风险低","B.操控越强，舒适性越差，鼓包风险越高","C.操控越强，舒适性越高，鼓包风险低","D.操控弱，舒适性差，鼓包风险低"],ans:"B",score:1},
+        {q:"16. 轮毂出现裂纹，正确处理方案",opts:["A.焊接修复继续使用","B.抛光打磨裂纹继续使用","C.直接更换新轮毂，禁止焊接修复","D.喷漆遮盖裂纹"],ans:"C",score:1},
+        {q:"17. 轮毂改装时，轮毂直径改动建议不超过原厂，保障安全与仪表准确",opts:["A.±4英寸","B.±2英寸","C.±5英寸","D.无限制"],ans:"B",score:1},
+        {q:"18. 阿里巴巴国际站买家分层L4是",opts:["A.L4百万买家Enterprise Pro","B.L4潜力买家Seed","C.L4小B买家Scaleup","D.L4注册买家"],ans:"A",score:1},
+        {q:"19. 商家星等级，评定星等级每月几日更新",opts:["A.每月1号","B.每月5号","C.每月15号","D.每月月末"],ans:"B",score:1},
+        {q:"20. 商品进入国际站一级搜索引擎，下面哪一项条件错误",opts:["A.不能为重铺商品","B.商品信息质量分＞4.5分","C.重铺商品可以直接进入一级引擎","D.优先橱窗、高转化、近期有交易商品"],ans:"C",score:1},
+        {q:"21. 新手商家新手任务，要求发布多少条4.5分及以上商品",opts:["A.10个","B.30个","C.50个","D.150个"],ans:"B",score:1},
+        {q:"22. 严重知识产权侵权，国际站执行三振出局，累计记振几次关闭账号",opts:["A.1次","B.2次","C.3次","D.5次"],ans:"C",score:1},
+        {q:"23. 下面哪一项属于平台违规行为",opts:["A.聊天中主动引导买家脱离平台使用外部软件沟通","B.产品详情标注CE认证（产品具备真实CE证书）","C.开通信用保障服务接单","D.使用橱窗推广优品"],ans:"A",score:1},
+        {q:"24. 新手商家上线60天内，店铺商品数建议不低于",opts:["A.50","B.150","C.300","D.500"],ans:"C",score:1},
+        {q:"25. 国际站客服热线中国大陆地区号码",opts:["A.400‑826‑1688","B.400‑123‑4567","C.95188","D.10086"],ans:"A",score:1},
+    ],
+    check:[
+        {q:"1. TM窗口右侧面板可以读取哪些客户信息",opts:["A.客户所在国家地区","B.最近浏览产品","C.买家发送总询盘数量","D.买家会员注册时间、回复率"],ans:["A","B","C","D"],score:1.5},
+        {q:"2. 客户头像浮窗AI买家标签可以看到的偏好标签包含",opts:["A.商品价格敏感","B.Logo定制偏好","C.大额采购","D.海运偏好"],ans:["A","B","C","D"],score:1.5},
+        {q:"3. TM三轮对话框架，描述正确的有",opts:["A.第一轮：破冰接住需求、推荐产品、反问关键问题","B.第二轮：展示实力，发送图片视频、阶梯报价、挖掘使用场景","C.第三轮：推进下一步：推样品、视频看厂、锁交期、索要邮箱","D.三轮全程不停聊产品细节，不做推进动作"],ans:["A","B","C"],score:1.5},
+        {q:"4. TM第二轮对话中，展示供应商实力可以使用哪些素材",opts:["A.产品实拍图片","B.30秒车间产线短视频","C.目的国出货装柜案例图片","D.认证报告截图"],ans:["A","B","C","D"],score:1.5},
+        {q:"5. 客户深度背调的主要目的",opts:["A.识别风险，防骗止损","B.区分大进口商、小零售商，制定差异化谈判策略","C.挖掘聊天突破口","D.直接修改买家平台资料"],ans:["A","B","C"],score:1.5},
+        {q:"6. OKKI CRM快速画像，能够获取信息包含",opts:["A.公司成立时间、行业规模","B.海关采购记录、采购频次","C.社媒LinkedIn/Facebook主页","D.邮箱校验，区分企业邮箱/个人邮箱"],ans:["A","B","C","D"],score:1.5},
+        {q:"7. Accio Work深度洞察，适合A级大客户，可以挖掘",opts:["A.客户供应链网络，合作的其他中国供应商","B.海关进出口海运空运货量频次、目的港","C.公司决策层、采购负责人信息","D.历史贸易纠纷、行业口碑"],ans:["A","B","C","D"],score:1.5},
+        {q:"8. 当背调发现客户存在多次贸易纠纷，我们应该",opts:["A.引导使用信保订单","B.优先100%前TT预付，拒绝赊销","C.直接无条件放账期","D.提高风控警惕"],ans:["A","B"],score:1.5},
+        {q:"9. TM+邮件+WhatsApp组合跟进打法描述正确的是",opts:["A.破冰阶段主渠道TM","B.TM已读不回，可以启用邮件、WhatsApp跟进","C.长期维护WhatsApp打开率高于TM","D.所有沟通全部只使用TM单一渠道"],ans:["A","B","C"],score:1.5},
+        {q:"10. TM遇到客户回复"Let me discuss, will reply tomorrow."正确动作有",opts:["A.直接结束对话不再跟进","B.主动索要客户邮箱","C.在OKKI CRM建档，设置跟进提醒","D.准备PI截图给到客户"],ans:["B","C","D"],score:1.5},
+        {q:"11. 轮毂核心匹配参数，安装必须重点核对",opts:["A.PCD孔距","B.J值轮毂宽度","C.ET偏距","D.中心孔CB"],ans:["A","B","C","D"],score:1.5},
+        {q:"12. 铝合金轮毂主流制造工艺包含",opts:["A.重力/低压铸造","B.旋压铸造","C.锻造","D.实木铸造"],ans:["A","B","C"],score:1.5},
+        {q:"13. 钢制轮毂特点有",opts:["A.成本低廉","B.抗冲击强","C.重量大，散热差，容易生锈","D.重量极轻，造型丰富"],ans:["A","B","C"],score:1.5},
+        {q:"14. 轮毂日常保养和检查，正确做法",opts:["A.清洗轮毂使用中性洗车液，拒绝强酸强碱清洁剂","B.定期观察轮毂是否变形、裂纹","C.高速抖动时，检查动平衡和轮毂变形","D.轮毂出现裂纹焊接修复继续使用"],ans:["A","B","C"],score:1.5},
+        {q:"15. 大尺寸轮毂（19寸+）的优缺点",opts:["A.侧向支撑强，过弯稳定，外观运动","B.滤震差，颠簸感强","C.薄胎壁，鼓包爆胎风险提升","D.簧下质量增加油耗会有所上升"],ans:["A","B","C","D"],score:1.5},
+        {q:"16. 阿里巴巴国际站买家分层，下面层级属于平台买家分层3.0的有",opts:["A.L0注册买家","B.L1潜力买家Seed","C.L2小B买家Scaleup","D.L3企业买家Enterprise"],ans:["A","B","C","D"],score:1.5},
+        {q:"17. 国际站流量体系，属于免费流量的是",opts:["A.橱窗自然搜索流量","B.找工厂场景流量","C.猜你喜欢免费推荐流量","D.P4P付费广告"],ans:["A","B","C"],score:1.5},
+        {q:"18. 商品进入一级搜索引擎的限制，描述正确",opts:["A.重铺商品无法进入一级引擎","B.低转化新发商品60天后清退出一级引擎","C.商家星级越高，可进入一级引擎商品数量越多","D.重铺品可以无限进入一级引擎"],ans:["A","B","C"],score:1.5},
+        {q:"19. 新商家新手任务包含",opts:["A.发布30个4.5分以上商品","B.发布1条无水印字幕的非低质视频产品","C.橱窗使用满10个","D.开通信用保障服务"],ans:["A","B","C","D"],score:1.5},
+        {q:"20. 国际站知识产权一般侵权处罚，累计扣分会触发哪些处罚",opts:["A.严重警告邮件通知","B.限权7/14/21天","C.累计48分关闭账号","D.不会有任何处罚"],ans:["A","B","C"],score:1.5},
+    ],
+    judge:[
+        {q:"1. 在TM聊天查看买家后台数据，买家可以看到我方查看过他的资料。",ans:false,score:0.5},
+        {q:"2. 客户分层A/B/C等级是动态，客户回复具体内容可以升级等级。",ans:true,score:0.5},
+        {q:"3. TM沟通，每条消息尽量写长段落，把所有信息一次性全部写完。",ans:false,score:0.5},
+        {q:"4. C级客户只发送price询价，模板回复1‑2句，没有追问就不再继续骚扰。",ans:true,score:0.5},
+        {q:"5. 当客户说"商量一下"，代表业务结束，不需要再索要邮箱或设置跟进提醒。",ans:false,score:0.5},
+        {q:"6. OKKI CRM建议聊天结束立刻建档，不要依靠大脑记忆大量客户。",ans:true,score:0.5},
+        {q:"7. 轮毂J值代表轮毂宽度，会决定适配轮胎的宽度范围。",ans:true,score:0.5},
+        {q:"8. 轮毂PCD参数不匹配，可以强行安装，不会带来安全风险。",ans:false,score:0.5},
+        {q:"9. 旋压铸造结合铸造成本优势和锻造轻量化优势，是热门改装轮毂工艺。",ans:true,score:0.5},
+        {q:"10. 轮毂改装，轮胎总周长误差建议小于3%，防止ABS、ESP系统信号异常。",ans:true,score:0.5},
+        {q:"11. 镁合金、碳纤维轮毂性能极佳，但是价格昂贵，民用普及度不高。",ans:true,score:0.5},
+        {q:"12. 商家星等级由商机分和交易分双赛道取高作为最终星级。",ans:true,score:0.5},
+        {q:"13. 国际站一级引擎商品可以包含重铺商品，重铺品权重很高。",ans:false,score:0.5},
+        {q:"14. 新商家上线需要完成新手任务，优品建议至少20个以上。",ans:true,score:0.5},
+        {q:"15. 聊天签名、消息框主动引导客户使用WhatsApp等外部软件沟通属于平台违规。",ans:true,score:0.5},
+        {q:"16. 严重侵权三振出局，三次记振直接关闭账号。",ans:true,score:0.5},
+        {q:"17. RTS市场商家违背承诺会触发平台处罚。",ans:true,score:0.5},
+        {q:"18. 外贸云课堂网址为peixun.alibaba.com。",ans:true,score:0.5},
+        {q:"19. TM跟进，客户在线已读不回，持续循环发送Hello? Are you there?。",ans:false,score:0.5},
+        {q:"20. A级客户转化率基准线5%，优秀可以达到15%。",ans:true,score:0.5},
+    ],
+    fill:[
+        {q:"1. TM实战30秒客户分层分为____、____、____三级（3空）",ans:["A级","B级","C级"],score:1.5},
+        {q:"2. TM三轮对话分别为：第一轮____；第二轮____；第三轮____（3空）",ans:["破冰&锚定需求","展示实力建立信任","推进下一步动作"],score:1.5},
+        {q:"3. 组合跟进四个渠道分别为TM、____、____、OKKI提醒（2空）",ans:["邮件","WhatsApp"],score:1},
+        {q:"4. 轮毂三大核心结构：轮辋、____、____（2空）",ans:["轮辐","中心盘"],score:1},
+        {q:"5. ET值是轮毂中心线到____的距离，单位mm（1空）",ans:["轮毂安装面"],score:0.5},
+        {q:"6. 轮毂制造三大主流工艺：铸造、____、____（2空）",ans:["旋压铸造","锻造"],score:1},
+        {q:"7. 国际站买家分层最高等级叫____（英文Enterprise Pro）（1空）",ans:["L4百万买家"],score:0.5},
+        {q:"8. 商家星等级两大打分模块分别为____分、____分，各占50分（2空）",ans:["商机","交易"],score:1},
+        {q:"9. 新手任务视频发布要求横屏16:9，分辨率≥____P，时长15‑45秒（1空）",ans:["720"],score:0.5},
+        {q:"10. 一般知识产权侵权累计扣____分，直接关闭账号（1空）",ans:["48"],score:0.5},
+    ]
+};
+
+//渲染单选
+function renderRadio(){
+    let html="";
+    questionBank.radio.forEach((item,idx)=>{
+        html +=`<div class="q-card">
+            <div class="font-medium">${item.q}</div>
+            <div class="mt-2">`;
+        item.opts.forEach(opt=>{
+            html +=`<label class="block my-1"><input type="radio" name="r${idx}" value="${opt[0]}"> ${opt}</label>`;
+        })
+        html +=`</div>
+        <div class="ans-wrong hide" id="er${idx}">正确答案：${item.ans}</div>
+        </div>`;
+    })
+    document.querySelector("#radioList").innerHTML = html;
+}
+//渲染多选
+function renderCheck(){
+    let html="";
+    questionBank.check.forEach((item,idx)=>{
+        html +=`<div class="q-card">
+            <div class="font-medium">${item.q}</div>
+            <div class="mt-2">`;
+        item.opts.forEach(opt=>{
+            html +=`<label class="block my-1"><input type="checkbox" name="c${idx}" value="${opt[0]}"> ${opt}</label>`;
+        })
+        html +=`</div>
+        <div class="ans-wrong hide" id="ec${idx}">正确答案：${item.ans.join(",")}</div>
+        </div>`;
+    })
+    document.querySelector("#checkList").innerHTML = html;
+}
+//渲染判断
+function renderJudge(){
+    let html="";
+    questionBank.judge.forEach((item,idx)=>{
+        html +=`<div class="q-card">
+        <div class="font-medium">${item.q}</div>
+        <div class="mt-2">
+            <label><input type="radio" name="j${idx}" value="true"> √ 正确</label>
+            <label class="ml-4"><input type="radio" name="j${idx}" value="false"> × 错误</label>
+        </div>
+        <div class="ans-wrong hide" id="ej${idx}">正确答案：${item.ans?"√正确":"×错误"}</div>
+        </div>`;
+    })
+    document.querySelector("#judgeList").innerHTML = html;
+}
+//渲染填空
+function renderFill(){
+    let html="";
+    questionBank.fill.forEach((item,idx)=>{
+        html +=`<div class="q-card">
+        <div class="font-medium">${item.q}</div>
+        `;
+        for(let i=0;i<item.ans.length;i++){
+            html +=`<input class="text-input" name="f${idx}_${i}" placeholder="填写第${i+1}空">`;
+        }
+        html +=`<div class="ans-wrong hide" id="ef${idx}">标准答案：${item.ans.join("｜")}</div>
+        </div>`;
+    })
+    document.querySelector("#fillList").innerHTML = html;
+}
+
+//倒计时
+let timer;
+function startCountDown(totalMin){
+    let leftSec = totalMin*60;
+    timer = setInterval(()=>{
+        leftSec--;
+        if(leftSec<=0){
+            clearInterval(timer);
+            alert("考试时间到，自动提交试卷");
+            doSubmit();
+            return;
+        }
+        let m = Math.floor(leftSec/60);
+        let s = leftSec%60;
+        document.querySelector("#countdown").innerText = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    },1000);
+}
+
+//判分
+function doSubmit(){
+    clearInterval(timer);
+    let score = 0;
+    let errHtml = "";
+    //单选
+    questionBank.radio.forEach((q,idx)=>{
+        let sel = document.querySelector(`input[name="r${idx}"]:checked`);
+        const errDom = document.getElementById(`er${idx}`);
+        if(sel && sel.value === q.ans){
+            score += q.score;
+            errDom.classList.add("hide");
+        }else{
+            errDom.classList.remove("hide");
+            errHtml += `<div class="text-sm my-1">单选${idx+1}: 答错｜正确答案 ${q.ans}</div>`;
+        }
+    })
+    //多选
+    questionBank.check.forEach((q,idx)=>{
+        let sel = Array.from(document.querySelectorAll(`input[name="c${idx}"]:checked`)).map(x=>x.value).sort();
+        let std = [...q.ans].sort();
+        const errDom = document.getElementById(`ec${idx}`);
+        if(JSON.stringify(sel) === JSON.stringify(std)){
+            score += q.score;
+            errDom.classList.add("hide");
+        }else{
+            errDom.classList.remove("hide");
+            errHtml += `<div class="text-sm my-1">多选${idx+1}: 答错｜正确答案 ${q.ans.join(",")}</div>`;
+        }
+    })
+    //判断
+    questionBank.judge.forEach((q,idx)=>{
+        let sel = document.querySelector(`input[name="j${idx}"]:checked`);
+        const errDom = document.getElementById(`ej${idx}`);
+        if(sel && (sel.value === String(q.ans))){
+            score += q.score;
+            errDom.classList.add("hide");
+        }else{
+            errDom.classList.remove("hide");
+            errHtml += `<div class="text-sm my-1">判断${idx+1}:答错｜正确${q.ans?"√":"×"}</div>`;
+        }
+    })
+    //填空（宽松匹配，忽略空格）
+    questionBank.fill.forEach((q,idx)=>{
+        let ok = true;
+        for(let i=0;i<q.ans.length;i++){
+            let input = document.querySelector(`input[name="f${idx}_${i}"]`);
+            let userVal = input.value.trim();
+            if(userVal !== q.ans[i]) ok = false;
+        }
+        const errDom = document.getElementById(`ef${idx}`);
+        if(ok){
+            score += q.score;
+            errDom.classList.add("hide");
+        }else{
+            errDom.classList.remove("hide");
+            errHtml += `<div class="text-sm my-1">填空${idx+1}:答错｜标准答案：${q.ans.join("｜")}</div>`;
+        }
+    })
+
+    document.getElementById("scoreVal").innerText = score.toFixed(2);
+    document.getElementById("errorDetail").innerHTML = errHtml||"<div class='ans-right'>客观题全部答对🎉</div>";
+    let tipDom = document.getElementById("passTip");
+    if(score>=45){
+        tipDom.innerHTML = `<span class="text-green-600">客观题达到参考合格线（45/75）</span>`;
+    }else{
+        tipDom.innerHTML = `<span class="text-red-600">客观题未达到参考合格线（45/75），建议重新复习</span>`;
+    }
+    document.getElementById("resultWrap").classList.remove("hide");
+    document.getElementById("submitBtn").disabled=true;
+}
+
+//初始化
+document.querySelector("#startBtn").onclick = ()=>{
+    document.querySelector("#startBtn").classList.add("hide");
+    document.querySelector("#examWrap").classList.remove("hide");
+    renderRadio();renderCheck();renderJudge();renderFill();
+    startCountDown(150);
+}
+document.querySelector("#submitBtn").onclick = doSubmit;
+</script>
+</body>
+</html>
