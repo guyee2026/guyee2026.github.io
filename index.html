@@ -208,7 +208,6 @@ function renderRadio(){
             html +=`<label class="block my-1"><input type="radio" name="r${idx}" value="${opt[0]}"> ${opt}</label>`;
         })
         html +=`</div>
-        <div class="ans-wrong hide" id="er${idx}">正确答案：${item.ans}</div>
         </div>`;
     })
     document.querySelector("#radioList").innerHTML = html;
@@ -224,7 +223,6 @@ function renderCheck(){
             html +=`<label class="block my-1"><input type="checkbox" name="c${idx}" value="${opt[0]}"> ${opt}</label>`;
         })
         html +=`</div>
-        <div class="ans-wrong hide" id="ec${idx}">正确答案：${item.ans.join(",")}</div>
         </div>`;
     })
     document.querySelector("#checkList").innerHTML = html;
@@ -239,7 +237,6 @@ function renderJudge(){
             <label><input type="radio" name="j${idx}" value="true"> √ 正确</label>
             <label class="ml-4"><input type="radio" name="j${idx}" value="false"> × 错误</label>
         </div>
-        <div class="ans-wrong hide" id="ej${idx}">正确答案：${item.ans?"√正确":"×错误"}</div>
         </div>`;
     })
     document.querySelector("#judgeList").innerHTML = html;
@@ -254,8 +251,7 @@ function renderFill(){
         for(let i=0;i<item.ans.length;i++){
             html +=`<input class="text-input" name="f${idx}_${i}" placeholder="填写第${i+1}空">`;
         }
-        html +=`<div class="ans-wrong hide" id="ef${idx}">标准答案：${item.ans.join("｜")}</div>
-        </div>`;
+        html +=`</div>`;
     })
     document.querySelector("#fillList").innerHTML = html;
 }
@@ -286,38 +282,29 @@ function doSubmit(){
     //单选
     questionBank.radio.forEach((q,idx)=>{
         let sel = document.querySelector(`input[name="r${idx}"]:checked`);
-        const errDom = document.getElementById(`er${idx}`);
         if(sel && sel.value === q.ans){
             score += q.score;
-            errDom.classList.add("hide");
         }else{
-            errDom.classList.remove("hide");
-            errHtml += `<div class="text-sm my-1">单选${idx+1}: 答错｜正确答案 ${q.ans}</div>`;
+            errHtml += `<div class="text-sm my-1">单选${idx+1}: 答错</div>`;
         }
     })
     //多选
     questionBank.check.forEach((q,idx)=>{
         let sel = Array.from(document.querySelectorAll(`input[name="c${idx}"]:checked`)).map(x=>x.value).sort();
         let std = [...q.ans].sort();
-        const errDom = document.getElementById(`ec${idx}`);
         if(JSON.stringify(sel) === JSON.stringify(std)){
             score += q.score;
-            errDom.classList.add("hide");
         }else{
-            errDom.classList.remove("hide");
-            errHtml += `<div class="text-sm my-1">多选${idx+1}: 答错｜正确答案 ${q.ans.join(",")}</div>`;
+            errHtml += `<div class="text-sm my-1">多选${idx+1}: 答错</div>`;
         }
     })
     //判断
     questionBank.judge.forEach((q,idx)=>{
         let sel = document.querySelector(`input[name="j${idx}"]:checked`);
-        const errDom = document.getElementById(`ej${idx}`);
         if(sel && (sel.value === String(q.ans))){
             score += q.score;
-            errDom.classList.add("hide");
         }else{
-            errDom.classList.remove("hide");
-            errHtml += `<div class="text-sm my-1">判断${idx+1}:答错｜正确${q.ans?"√":"×"}</div>`;
+            errHtml += `<div class="text-sm my-1">判断${idx+1}:答错</div>`;
         }
     })
     //填空（宽松匹配，忽略空格）
@@ -328,13 +315,10 @@ function doSubmit(){
             let userVal = input.value.trim();
             if(userVal !== q.ans[i]) ok = false;
         }
-        const errDom = document.getElementById(`ef${idx}`);
         if(ok){
             score += q.score;
-            errDom.classList.add("hide");
         }else{
-            errDom.classList.remove("hide");
-            errHtml += `<div class="text-sm my-1">填空${idx+1}:答错｜标准答案：${q.ans.join("｜")}</div>`;
+            errHtml += `<div class="text-sm my-1">填空${idx+1}:答错</div>`;
         }
     })
 

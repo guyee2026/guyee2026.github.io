@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>国际站外贸进阶测试卷B卷｜满分100分</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {box-sizing: border-box;}
+        .q-card{border:1px solid #e5e7eb;border-radius:12px;padding:16px;margin-bottom:18px;background:#fff;}
+        .ans-right{background:#dcfce7;border-left:4px solid #22c55e;padding:8px 12px;border-radius:6px;margin-top:6px;}
+        .hide{display:none !important;}
+        input[type="radio"],input[type="checkbox"]{width:18px;height:18px;margin-right:8px;}
+        input.text-input{border:1px solid #cbd5e1;padding:8px;border-radius:6px;width:100%;margin:4px 0}
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 pb-20">
+<div class="max-w-3xl mx-auto bg-white min-h-screen shadow">
+    <div class="p-5 bg-blue-700 text-white">
+        <h1 class="text-xl font-bold">阿里巴巴国际站外贸进阶测试卷（B卷）</h1>
+        <div class="mt-2 text-sm">
+            <div>考试时长：150分钟｜建议答题120分钟｜满分：100分｜60分及格</div>
+            <div id="timerBox" class="mt-2 font-mono text-yellow-200">剩余时间：<span id="countdown">150:00</span></div>
+        </div>
+    </div>
+
+    <div class="p-5">
+        <div class="mb-4 text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
+            说明：本试卷覆盖询盘转化、报价谈判、物流与贸易术语、轮毂产品技术、平台规则与风控。单选/多选/判断/填空系统自动评分；简答题、案例分析为主观题，需要人工阅卷。
+        </div>
+
+        <button id="startBtn" class="w-full bg-blue-600 text-white py-3 rounded-lg text-lg">📝 开始答题</button>
+
+        <div id="examWrap" class="hide">
+            <!-- 单选题 -->
+            <section class="mb-8">
+                <h2 class="text-lg font-bold mb-3">一、单项选择题（每题1分，共25分）</h2>
+                <div id="radioList"></div>
+            </section>
+
+            <!-- 多选题 -->
+            <section class="mb-8">
+                <h2 class="text-lg font-bold mb-3">二、多项选择题（每题1.5分，共30分；多选少选错选均不得分）</h2>
+                <div id="checkList"></div>
+            </section>
+
+            <!-- 判断 -->
+            <section class="mb-8">
+                <h2 class="text-lg font-bold mb-3">三、判断题（每题0.5分，共10分，正确√，错误×）</h2>
+                <div id="judgeList"></div>
+            </section>
+
+            <!-- 填空 -->
+            <section class="mb-8">
+                <h2 class="text-lg font-bold mb-3">四、填空题（每空1分，共10分）</h2>
+                <div id="fillList"></div>
+            </section>
+
+            <!-- 主观题 -->
+            <section class="mb-8">
+                <h2 class="text-lg font-bold mb-3">五、简答题（共15分，人工阅卷）</h2>
+                <div class="q-card">
+                    <div>1.(4分)收到RFQ询盘后，报价前需要向买家确认哪些关键参数？</div>
+                    <textarea class="w-full border p-2 mt-2 rounded" rows="4" placeholder="在此填写答案"></textarea>
+                </div>
+                <div class="q-card">
+                    <div>2.(4分)简述轮毂出口报价的成本构成（至少列出4项）。</div>
+                    <textarea class="w-full border p-2 mt-2 rounded" rows="4" placeholder="在此填写答案"></textarea>
+                </div>
+                <div class="q-card">
+                    <div>3.(3分)客户要求先发货后付款（O/A 30天），你如何应对？</div>
+                    <textarea class="w-full border p-2 mt-2 rounded" rows="3" placeholder="在此填写答案"></textarea>
+                </div>
+                <div class="q-card">
+                    <div>4.(4分)如何利用OKKI CRM提升客户跟进效率？</div>
+                    <textarea class="w-full border p-2 mt-2 rounded" rows="4" placeholder="在此填写答案"></textarea>
+                </div>
+
+                <h2 class="text-lg font-bold mb-3 mt-6">六、案例分析题（10分，人工阅卷）</h2>
+                <div class="q-card">
+<pre class="text-sm bg-gray-50 p-2 rounded">
+案例背景：美国买家通过RFQ询价18寸锻造轮毂100套，要求OEM定制品牌logo、PCD 5×120、ET 35，目标价$150/套，并称另一家供应商报价$135。买家希望使用PayPal付款，并提出"先发货、后付款（O/A 30天）"的要求。
+
+请完成：
+1. 评估该客户的风险等级并说明判断理由（3分）
+2. 给出你的报价与谈判策略（3分）
+3. 付款方式如何把关（2分）
+4. OEM定制logo需要注意哪些合规与品质问题（2分）
+</pre>
+                    <textarea class="w-full border p-2 mt-2 rounded" rows="8" placeholder="在此填写答案"></textarea>
+                </div>
+            </section>
+
+            <button id="submitBtn" class="w-full bg-green-600 text-white py-3 rounded-lg text-lg mt-4">✅ 提交试卷（客观题自动判分）</button>
+
+            <!-- 结果区域 -->
+            <div id="resultWrap" class="hide mt-6 p-4 rounded-lg border-2 border-gray-300">
+                <h3 class="text-xl font-bold">📊 测评结果</h3>
+                <div class="my-2">客观题得分：<span id="scoreVal" class="text-red-600 font-bold">0</span> /75分</div>
+                <div class="my-2">主观题（简答+案例）合计25分需要人工批改，最终总分=客观分+主观分</div>
+                <div id="passTip" class="text-lg my-2"></div>
+                <hr class="my-4">
+                <h4 class="font-bold">错题详情：</h4>
+                <div id="errorDetail"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// 题库定义（答案仅用于后台判分，不展示）
+const questionBank = {
+    radio:[
+        {q:"1. 国际站考核卖家询盘回复率，建议在多长时间内完成首次回复？",opts:["A.24小时内","B.3天内","C.一周内","D.平台不考核"],ans:"A",score:1},
+        {q:"2. 买家回复\"Let me discuss with my partner.\"，正确的动作是？",opts:["A.立即连发多条消息追问","B.索要邮箱并设置跟进提醒","C.结束对话不再跟进","D.直接降价促成"],ans:"B",score:1},
+        {q:"3. 信用保障（Trade Assurance）的核心价值是？",opts:["A.提供免费物流","B.赠送平台流量","C.平台担保资金与履约","D.免除企业认证"],ans:"C",score:1},
+        {q:"4. P4P直通车属于哪一类流量？",opts:["A.自然搜索流量","B.付费广告流量","C.社媒推荐流量","D.邮件营销流量"],ans:"B",score:1},
+        {q:"5. 橱窗商品的核心作用是？",opts:["A.永久置顶展示","B.免除广告费用","C.加权自然搜索排名","D.直接提高星等级"],ans:"C",score:1},
+        {q:"6. FOB术语下，货物风险在何时转移给买方？",opts:["A.装运港货物装上船后","B.目的港卸货后","C.工厂交货时","D.买方付款后"],ans:"A",score:1},
+        {q:"7. DDP术语下，进口清关和关税由谁承担？",opts:["A.买方","B.卖方","C.双方各半","D.货代公司"],ans:"B",score:1},
+        {q:"8. 轮毂J值代表的是？",opts:["A.轮毂直径","B.轮毂宽度","C.螺栓孔距","D.中心孔径"],ans:"B",score:1},
+        {q:"9. PCD 5×120孔距常见于哪个汽车品牌？",opts:["A.宝马","B.丰田","C.福特","D.现代"],ans:"A",score:1},
+        {q:"10. 锻造轮毂相对铸造轮毂的优势是？",opts:["A.成本更低","B.更轻且强度更高","C.重量更大","D.可以焊接修复"],ans:"B",score:1},
+        {q:"11. 轮毂动平衡测试主要解决什么问题？",opts:["A.高速行驶方向盘抖动","B.油耗过高","C.刹车异响","D.发动机噪音"],ans:"A",score:1},
+        {q:"12. 以下轮毂表面工艺中，耐腐蚀性较差、需要定期养护的是？",opts:["A.粉末喷涂","B.电镀","C.烤漆","D.阳极氧化"],ans:"B",score:1},
+        {q:"13. 买家问\"Are you factory or trading company?\"，最佳回应是？",opts:["A.含糊其辞不正面回答","B.诚实说明并展示工厂产线视频证据","C.拒绝回答该问题","D.反问买家真实意图"],ans:"B",score:1},
+        {q:"14. OKKI CRM的海关数据最典型的用途是？",opts:["A.核查客户历史进口记录","B.发布产品","C.投放广告","D.员工考勤"],ans:"A",score:1},
+        {q:"15. 20GP标准集装箱可用容积约为？",opts:["A.58立方米","B.28立方米","C.68立方米","D.15立方米"],ans:"B",score:1},
+        {q:"16. 以下哪一项不是报价单的必备要素？",opts:["A.买家护照号","B.产品规格型号","C.贸易术语","D.交货期"],ans:"A",score:1},
+        {q:"17. TM消息已读不回，正确的跟进节奏是？",opts:["A.每小时发送\"Hello?\"追问","B.直接放弃该客户","C.24小时内邮件跟进，48小时WhatsApp跟进","D.电话连环轰炸"],ans:"C",score:1},
+        {q:"18. 海关编码8708.70.4545对应的是？",opts:["A.汽车轮胎","B.汽车刹车片","C.汽车车轮及其零件","D.汽车轴承"],ans:"C",score:1},
+        {q:"19. 商机成本的计算公式是？",opts:["A.商机数÷广告花费","B.广告花费÷商机数","C.询盘数×点击量","D.曝光量÷点击率"],ans:"B",score:1},
+        {q:"20. 面对目的国反倾销调查风险，正确策略是？",opts:["A.隐瞒真实原产地","B.伪造贸易单据","C.单一市场持续降价","D.关注税率政策、合规申报并多元化市场"],ans:"D",score:1},
+        {q:"21. EVA自动接待助手的定位是？",opts:["A.自动接待买家询盘、基于知识库回复","B.人工客服外包","C.广告投放系统","D.财务核算工具"],ans:"A",score:1},
+        {q:"22. 图片银行的核心作用是？",opts:["A.压缩图片体积","B.自动剪辑视频","C.群发营销邮件","D.统一管理图片资产并支持跨产品复用"],ans:"D",score:1},
+        {q:"23. 关于商品重铺，正确的是？",opts:["A.重铺商品可以无限加权","B.每天重铺必上首页","C.重铺商品无法进入一级搜索引擎","D.重铺不受任何限制"],ans:"C",score:1},
+        {q:"24. 客户要求先发货后付款（O/A 30天），正确应对是？",opts:["A.立即同意以抢订单","B.直接拒绝并终止沟通","C.风险过高，坚持信保订单或TT预付","D.全额放账期"],ans:"C",score:1},
+        {q:"25. 提高外贸开发信打开率的方法是？",opts:["A.附件越大越好","B.标题全部大写","C.正文内嵌产品图片而非大附件","D.无主题群发"],ans:"C",score:1},
+    ],
+    check:[
+        {q:"1. 提升询盘转化率的关键动作有哪些？",opts:["A.快速响应","B.专业报价","C.挖掘客户需求","D.只报最低价"],ans:["A","B","C"],score:1.5},
+        {q:"2. TM沟通中应当避免的行为有？",opts:["A.一次发送超长段落","B.单条消息三句以内","C.反复纠缠价格","D.引导买家脱离平台沟通"],ans:["A","C","D"],score:1.5},
+        {q:"3. 国际站流量来源包括？",opts:["A.自然搜索流量","B.P4P付费流量","C.找工厂场景流量","D.邮件营销流量"],ans:["A","B","C"],score:1.5},
+        {q:"4. 轮毂出厂前常规检测项目包括？",opts:["A.冲击测试","B.弯曲疲劳测试","C.径向疲劳测试","D.盐雾腐蚀测试"],ans:["A","B","C","D"],score:1.5},
+        {q:"5. 使用信保订单的好处有？",opts:["A.提升买家信任","B.平台保障资金安全","C.纠纷处理有据可依","D.免除进口关税"],ans:["A","B","C"],score:1.5},
+        {q:"6. 客户背调可用的渠道有？",opts:["A.平台客户画像","B.OKKI海关数据","C.LinkedIn等社媒","D.广告投放后台"],ans:["A","B","C"],score:1.5},
+        {q:"7. 轮毂报价前需要确认的参数有？",opts:["A.PCD孔距","B.ET偏距","C.中心孔CB","D.颜色与款式"],ans:["A","B","C","D"],score:1.5},
+        {q:"8. 选择物流渠道需要考虑的因素有？",opts:["A.时效","B.费用","C.货量与体积","D.目的国关税政策"],ans:["A","B","C","D"],score:1.5},
+        {q:"9. 产品发布信息质量要素包括？",opts:["A.标题关键词","B.高清图片与视频","C.属性填写完整","D.认证证书"],ans:["A","B","C","D"],score:1.5},
+        {q:"10. 降低商机成本的方法有？",opts:["A.优化关键词精准度","B.提高询盘转化率","C.暂停低效广告词","D.盲目提高广告预算"],ans:["A","B","C"],score:1.5},
+        {q:"11. 轮毂设计风格分类包括？",opts:["A.凹面造型","B.竞赛风格","C.越野风格","D.多片式"],ans:["A","B","C","D"],score:1.5},
+        {q:"12. 轮毂售后常见问题有？",opts:["A.动平衡抖动","B.表面腐蚀","C.轮毂变形","D.孔距与车型不符"],ans:["A","B","C","D"],score:1.5},
+        {q:"13. EVA自动接待适用的场景有？",opts:["A.非工作时间","B.高频重复问题","C.节假日","D.重大投诉升级处理"],ans:["A","B","C"],score:1.5},
+        {q:"14. 大客户（OEM定制）谈判策略包括？",opts:["A.展示工厂实力","B.分阶段打样验证","C.锁定MOQ与交期","D.一味降价迎合"],ans:["A","B","C"],score:1.5},
+        {q:"15. 国际站营销工具有？",opts:["A.橱窗","B.P4P直通车","C.推广营销","D.品效千寻方案"],ans:["A","B","C","D"],score:1.5},
+        {q:"16. 外贸邮件写作要点有？",opts:["A.主题简明清晰","B.正文图片化呈现","C.规范落款签名","D.正文全部大写"],ans:["A","B","C"],score:1.5},
+        {q:"17. 轮毂出口包装要求有？",opts:["A.防撞缓冲","B.防潮处理","C.唛头标识清楚","D.无需包装"],ans:["A","B","C"],score:1.5},
+        {q:"18. 客户分级判定的维度有？",opts:["A.询盘内容具体度","B.资料完整度","C.浏览行为","D.历史交易记录"],ans:["A","B","C","D"],score:1.5},
+        {q:"19. 数据参谋的用途有？",opts:["A.行业趋势分析","B.关键词分析","C.店铺流量诊断","D.核算员工工资"],ans:["A","B","C"],score:1.5},
+        {q:"20. 应对反倾销的策略有？",opts:["A.多元化市场布局","B.合规申报原产地","C.提升产品附加值","D.瞒报原产地"],ans:["A","B","C"],score:1.5},
+    ],
+    judge:[
+        {q:"1. 商家星等级每月1号更新。",ans:false,score:0.5},
+        {q:"2. 橱窗商品越多越好。",ans:false,score:0.5},
+        {q:"3. 信息质量分低于4.5的商品无法进入一级搜索引擎。",ans:true,score:0.5},
+        {q:"4. 信保订单的资金会被平台全部冻结。",ans:false,score:0.5},
+        {q:"5. DDP条款下卖方承担目的港清关及关税。",ans:true,score:0.5},
+        {q:"6. 锻造轮毂损坏后可以焊接修复。",ans:false,score:0.5},
+        {q:"7. 低压铸造相比重力铸造，内部组织更致密。",ans:true,score:0.5},
+        {q:"8. 买家分层L4为平台最大体量买家。",ans:true,score:0.5},
+        {q:"9. 询盘回复越慢，商机转化越高。",ans:false,score:0.5},
+        {q:"10. 面对价格敏感客户，第一时间降价是正确策略。",ans:false,score:0.5},
+        {q:"11. OKKI CRM支持聊天结束后自动建档。",ans:true,score:0.5},
+        {q:"12. 通过海关数据可以查看同行的出口记录。",ans:true,score:0.5},
+        {q:"13. 产品详情页可以夸大宣传。",ans:false,score:0.5},
+        {q:"14. 在TM聊天中引导买家使用外部聊天软件属平台违规。",ans:true,score:0.5},
+        {q:"15. 图片银行的图片可以复用于多个产品。",ans:true,score:0.5},
+        {q:"16. 商标侵权行为首次发生即关闭账号。",ans:false,score:0.5},
+        {q:"17. 数据参谋对新手商家免费开放全部功能。",ans:false,score:0.5},
+        {q:"18. JWL是日本轮毂安全标准。",ans:true,score:0.5},
+        {q:"19. 商机成本越低，说明广告投放效率越高。",ans:true,score:0.5},
+        {q:"20. 橱窗位数量与商家星等级相关。",ans:true,score:0.5},
+    ],
+    fill:[
+        {q:"1. 国际站信用保障订单英文名称是____（1空）",ans:[["Trade Assurance"]],score:1},
+        {q:"2. 20GP标准集装箱可用容积约____立方米（1空）",ans:[["28"]],score:1},
+        {q:"3. JWL是____国轮毂检测标准（1空）",ans:[["日本"]],score:1},
+        {q:"4. 轮毂出口美国的海关编码（HS Code）是____（1空）",ans:[["8708.70.4545"]],score:1},
+        {q:"5. 商机成本 = ____ ÷ 商机数（1空）",ans:[["广告花费","广告费","广告支出"]],score:1},
+        {q:"6. 轮毂中心孔的英文缩写是____（1空）",ans:[["CB"]],score:1},
+        {q:"7. 五步法客户背调的第一步是____（1空）",ans:[["平台画像","站内画像","平台客户画像"]],score:1},
+        {q:"8. 轮毂偏距ET值的单位是____（1空）",ans:[["mm","毫米"]],score:1},
+        {q:"9. 铝合金轮毂相比钢轮毂重量更____（1空）",ans:[["轻"]],score:1},
+        {q:"10. 开发信建议将产品图片____到邮件正文而非附件（1空）",ans:[["嵌入","内嵌"]],score:1},
+    ]
+};
+
+//渲染单选
+function renderRadio(){
+    let html="";
+    questionBank.radio.forEach((item,idx)=>{
+        html +=`<div class="q-card">
+            <div class="font-medium">${item.q}</div>
+            <div class="mt-2">`;
+        item.opts.forEach(opt=>{
+            html +=`<label class="block my-1"><input type="radio" name="r${idx}" value="${opt[0]}"> ${opt}</label>`;
+        })
+        html +=`</div>
+        </div>`;
+    })
+    document.querySelector("#radioList").innerHTML = html;
+}
+//渲染多选
+function renderCheck(){
+    let html="";
+    questionBank.check.forEach((item,idx)=>{
+        html +=`<div class="q-card">
+            <div class="font-medium">${item.q}</div>
+            <div class="mt-2">`;
+        item.opts.forEach(opt=>{
+            html +=`<label class="block my-1"><input type="checkbox" name="c${idx}" value="${opt[0]}"> ${opt}</label>`;
+        })
+        html +=`</div>
+        </div>`;
+    })
+    document.querySelector("#checkList").innerHTML = html;
+}
+//渲染判断
+function renderJudge(){
+    let html="";
+    questionBank.judge.forEach((item,idx)=>{
+        html +=`<div class="q-card">
+        <div class="font-medium">${item.q}</div>
+        <div class="mt-2">
+            <label><input type="radio" name="j${idx}" value="true"> √ 正确</label>
+            <label class="ml-4"><input type="radio" name="j${idx}" value="false"> × 错误</label>
+        </div>
+        </div>`;
+    })
+    document.querySelector("#judgeList").innerHTML = html;
+}
+//渲染填空
+function renderFill(){
+    let html="";
+    questionBank.fill.forEach((item,idx)=>{
+        html +=`<div class="q-card">
+        <div class="font-medium">${item.q}</div>
+        `;
+        for(let i=0;i<item.ans.length;i++){
+            html +=`<input class="text-input" name="f${idx}_${i}" placeholder="填写第${i+1}空">`;
+        }
+        html +=`</div>`;
+    })
+    document.querySelector("#fillList").innerHTML = html;
+}
+
+//倒计时
+let timer;
+function startCountDown(totalMin){
+    let leftSec = totalMin*60;
+    timer = setInterval(()=>{
+        leftSec--;
+        if(leftSec<=0){
+            clearInterval(timer);
+            alert("考试时间到，自动提交试卷");
+            doSubmit();
+            return;
+        }
+        let m = Math.floor(leftSec/60);
+        let s = leftSec%60;
+        document.querySelector("#countdown").innerText = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    },1000);
+}
+
+//判分
+function doSubmit(){
+    clearInterval(timer);
+    let score = 0;
+    let errHtml = "";
+    //单选
+    questionBank.radio.forEach((q,idx)=>{
+        let sel = document.querySelector(`input[name="r${idx}"]:checked`);
+        if(sel && sel.value === q.ans){
+            score += q.score;
+        }else{
+            errHtml += `<div class="text-sm my-1">单选${idx+1}: 答错</div>`;
+        }
+    })
+    //多选
+    questionBank.check.forEach((q,idx)=>{
+        let sel = Array.from(document.querySelectorAll(`input[name="c${idx}"]:checked`)).map(x=>x.value).sort();
+        let std = [...q.ans].sort();
+        if(JSON.stringify(sel) === JSON.stringify(std)){
+            score += q.score;
+        }else{
+            errHtml += `<div class="text-sm my-1">多选${idx+1}: 答错</div>`;
+        }
+    })
+    //判断
+    questionBank.judge.forEach((q,idx)=>{
+        let sel = document.querySelector(`input[name="j${idx}"]:checked`);
+        if(sel && (sel.value === String(q.ans))){
+            score += q.score;
+        }else{
+            errHtml += `<div class="text-sm my-1">判断${idx+1}:答错</div>`;
+        }
+    })
+    //填空（宽松匹配：忽略空格、大小写；支持多个可接受答案）
+    questionBank.fill.forEach((q,idx)=>{
+        let ok = true;
+        for(let i=0;i<q.ans.length;i++){
+            let input = document.querySelector(`input[name="f${idx}_${i}"]`);
+            let userVal = input.value.trim().toLowerCase();
+            let acc = q.ans[i].map(a=>a.toLowerCase());
+            if(!acc.includes(userVal)) ok = false;
+        }
+        if(ok){
+            score += q.score;
+        }else{
+            errHtml += `<div class="text-sm my-1">填空${idx+1}:答错</div>`;
+        }
+    })
+
+    document.getElementById("scoreVal").innerText = score.toFixed(2);
+    document.getElementById("errorDetail").innerHTML = errHtml||"<div class='ans-right'>客观题全部答对🎉</div>";
+    let tipDom = document.getElementById("passTip");
+    if(score>=45){
+        tipDom.innerHTML = `<span class="text-green-600">客观题达到参考合格线（45/75）</span>`;
+    }else{
+        tipDom.innerHTML = `<span class="text-red-600">客观题未达到参考合格线（45/75），建议重新复习</span>`;
+    }
+    document.getElementById("resultWrap").classList.remove("hide");
+    document.getElementById("submitBtn").disabled=true;
+}
+
+//初始化
+document.querySelector("#startBtn").onclick = ()=>{
+    document.querySelector("#startBtn").classList.add("hide");
+    document.querySelector("#examWrap").classList.remove("hide");
+    renderRadio();renderCheck();renderJudge();renderFill();
+    startCountDown(150);
+}
+document.querySelector("#submitBtn").onclick = doSubmit;
+</script>
+</body>
+</html>
